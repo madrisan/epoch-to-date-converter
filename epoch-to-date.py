@@ -3,7 +3,7 @@
 from __future__ import print_function
 
 from optparse import OptionParser
-import time
+import sys, time
 
 # example for <epoch>: 1397597400 --> 2014-04-15 21:30:00
 options = OptionParser(
@@ -13,7 +13,10 @@ options.add_option('-q', '--quiet', default=False,
 		help='Just display te result', action='store_true')
 
 def epoch_to_date(epoch):
-	return time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(int(epoch)))
+	try:
+		return time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(int(epoch)))
+	except:
+		return None
 
 def main():
 	opts, args = options.parse_args()
@@ -21,9 +24,13 @@ def main():
 		options.print_help()
 		return
 
+	date = epoch_to_date(args[0])
+	if date is None:
+		print('Invalid epoch: ' + args[0])
+		sys.exit(1)
+
 	if not opts.quiet:
 		print('Epoch : ' + args[0] + '\n    --> ', end="")
-	date = epoch_to_date(args[0])
 	print(date)
 
 if __name__ == '__main__':
