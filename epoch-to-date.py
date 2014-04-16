@@ -10,7 +10,7 @@ options = OptionParser(
 		usage='%prog [--quiet] <epoch>',
 		description='Epoch to Unix Timestamp Conversion Tool')
 options.add_option('-q', '--quiet', default=False,
-		help='Just display te result', action='store_true')
+		help='Just display the result', action='store_true')
 
 def epoch_to_date(epoch):
 	try:
