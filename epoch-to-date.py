@@ -12,6 +12,9 @@ options = OptionParser(
 options.add_option('-q', '--quiet', default=False,
 		help='Just display te result', action='store_true')
 
+def epoch_to_date(epoch):
+	return time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(int(epoch)))
+
 def main():
 	opts, args = options.parse_args()
 	if len(args) < 1:
@@ -20,7 +23,8 @@ def main():
 
 	if not opts.quiet:
 		print('Epoch : ' + args[0] + '\n    --> ', end="")
-	print(time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(int(args[0]))))
+	date = epoch_to_date(args[0])
+	print(date)
 
 if __name__ == '__main__':
 	main()
