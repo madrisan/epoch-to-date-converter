@@ -1,7 +1,7 @@
 #!/usr/bin/env python
+# Copyright (c) 2014 Davide Madrisan <davide.madrisan@gmail.com>
 
 from __future__ import print_function
-
 from optparse import OptionParser
 import os, sys, time
 
